@@ -27,7 +27,8 @@ public class MovementController : MonoBehaviour
     public readonly int movementYHash = Animator.StringToHash("MovementY");
     public readonly int isJumpingHash = Animator.StringToHash("isJumping");
     public readonly int isRunningHash = Animator.StringToHash("isRunning");
-
+    public readonly int isFiringHash = Animator.StringToHash("isFiring");
+    public readonly int isReloadingHash = Animator.StringToHash("isReloading");
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class MovementController : MonoBehaviour
         
         followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.y * aimSensativity, Vector3.left);
 
-        var angles = followTransform.transform.eulerAngles;
+        var angles = followTransform.transform.localEulerAngles;
         angles.z = 0;
 
         var angle = followTransform.transform.localEulerAngles.x;
@@ -64,6 +65,10 @@ public class MovementController : MonoBehaviour
         }
 
         followTransform.transform.localEulerAngles = angles;
+        transform.rotation = Quaternion.Euler(0, followTransform.transform.rotation.eulerAngles.y, 0);
+
+        followTransform.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
+
 
         if (playerController.isJumping)
         {
@@ -111,6 +116,9 @@ public class MovementController : MonoBehaviour
     public void OnFire(InputValue value)
     {
         playerController.isFiring = value.isPressed;
+
+        playerAnimator.SetBool(isFiringHash, playerController.isFiring);
+
     }
     public void OnAim(InputValue value)
     {
@@ -118,6 +126,8 @@ public class MovementController : MonoBehaviour
     }
     public void OnReload(InputValue value)
     {
+        playerController.isReloading = value.isPressed;
+        playerAnimator.SetBool(isReloadingHash, playerController.isReloading);
 
     }
     private void OnCollisionEnter(Collision collision)
