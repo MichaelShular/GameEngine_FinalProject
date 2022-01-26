@@ -74,7 +74,6 @@ public class MovementController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (playerController.isJumping) return;
 
         playerController.isJumping = true;
  
@@ -87,5 +86,7 @@ public class MovementController : MonoBehaviour
         if (!collision.gameObject.CompareTag("Ground") && !playerController.isJumping) return;
 
         playerController.isJumping = false;
+        playerAnimator.SetBool(isJumpingHash, false);
+
     }
 }
