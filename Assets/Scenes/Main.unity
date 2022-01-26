@@ -6454,6 +6454,7 @@ MonoBehaviour:
   isReloading: 0
   isJumping: 0
   isRunning: 0
+  isAiming: 0
 --- !u!114 &1487458234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6469,6 +6470,8 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 10
   jumpForce: 5
+  followTransform: {fileID: 470892805}
+  aimSensativity: 0.5
 --- !u!136 &1487458235
 CapsuleCollider:
   m_ObjectHideFlags: 0
