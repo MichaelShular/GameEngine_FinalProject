@@ -13,6 +13,7 @@ public class MovementController : MonoBehaviour
     float jumpForce = 5;
     
     PlayerController playerController;
+    Rigidbody playerRigidbody;
 
     Vector2 inputVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
@@ -20,6 +21,7 @@ public class MovementController : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        playerRigidbody = GetComponent<Rigidbody>();
     }
 
     // Start is called before the first frame update
@@ -61,6 +63,18 @@ public class MovementController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        playerController.isJumping = value.isPressed;
+        if (playerController.isJumping) return;
+
+        playerController.isJumping = true;
+ 
+        playerRigidbody.AddForce((transform.up + moveDirection) * jumpForce, ForceMode.Impulse);
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Ground") && !playerController.isJumping) return;
+
+        playerController.isJumping = false;
     }
 }
