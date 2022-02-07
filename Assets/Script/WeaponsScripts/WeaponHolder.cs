@@ -88,4 +88,9 @@ public class WeaponHolder : MonoBehaviour
 
         equippedWeapon.StopFiringWeapon();
     }
+
+    void StartReloading()
+    {
+
+    }
 }
