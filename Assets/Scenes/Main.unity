@@ -2584,7 +2584,9 @@ MonoBehaviour:
     repeating: 1
     weaponsHitLayers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 4294967295
+  isFiring: 0
+  isReloading: 0
 --- !u!1 &303306440
 GameObject:
   m_ObjectHideFlags: 3
@@ -6582,6 +6584,7 @@ MonoBehaviour:
   crossHairImage: {fileID: 0}
   weaponSocketLocation: {fileID: 10182477}
   gripIKSocketLocation: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!43 &1704999858
 Mesh:
   m_ObjectHideFlags: 0
