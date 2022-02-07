@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class AK47Component : WeaponComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void FireWeapon()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.FireWeapon();
     }
 }
