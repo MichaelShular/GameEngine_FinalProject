@@ -27,8 +27,7 @@ public class MovementController : MonoBehaviour
     public readonly int movementYHash = Animator.StringToHash("MovementY");
     public readonly int isJumpingHash = Animator.StringToHash("isJumping");
     public readonly int isRunningHash = Animator.StringToHash("isRunning");
-    public readonly int isFiringHash = Animator.StringToHash("isFiring");
-    public readonly int isReloadingHash = Animator.StringToHash("isReloading");
+    
 
     private void Awake()
     {
@@ -113,23 +112,12 @@ public class MovementController : MonoBehaviour
     {
         lookInput = value.Get<Vector2>();
     }
-    public void OnFire(InputValue value)
-    {
-        playerController.isFiring = value.isPressed;
-
-        playerAnimator.SetBool(isFiringHash, playerController.isFiring);
-
-    }
+  
     public void OnAim(InputValue value)
     {
         playerController.isAiming = value.isPressed;
     }
-    public void OnReload(InputValue value)
-    {
-        playerController.isReloading = value.isPressed;
-        playerAnimator.SetBool(isReloadingHash, playerController.isReloading);
-
-    }
+   
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Ground") && !playerController.isJumping) return;

@@ -2534,6 +2534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11381699}
+  - component: {fileID: 11381700}
   m_Layer: 0
   m_Name: AK47
   m_TagString: Untagged
@@ -2553,9 +2554,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1299616348}
+  - {fileID: 475231434}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -82, y: 40, z: 61}
+--- !u!114 &11381700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11381698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50e14c336b3ea848854b9230013e020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gripLocation: {fileID: 475231434}
 --- !u!1 &303306440
 GameObject:
   m_ObjectHideFlags: 3
@@ -3494,7 +3509,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17932
+  m_Name: pb_Mesh17938
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3681,6 +3696,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1487458237}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &475231433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475231434}
+  m_Layer: 0
+  m_Name: GripIKSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475231434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475231433}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.013, y: 0.25, z: 0.096}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11381699}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &527935303
 PrefabInstance:
@@ -5589,7 +5634,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17990
+  m_Name: pb_Mesh18042
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5902,7 +5947,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17970
+  m_Name: pb_Mesh18008
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6066,7 +6111,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17944
+  m_Name: pb_Mesh17976
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6522,13 +6567,14 @@ MonoBehaviour:
   weaponToSpawn: {fileID: 11381698}
   crossHairImage: {fileID: 0}
   weaponSocketLocation: {fileID: 10182477}
+  gripIKSocketLocation: {fileID: 0}
 --- !u!43 &1704999858
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17956
+  m_Name: pb_Mesh17988
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
