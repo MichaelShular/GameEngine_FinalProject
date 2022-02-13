@@ -67,8 +67,14 @@ public class WeaponHolder : MonoBehaviour
     }
     void StartFiring()
     {
-        if (equippedWeapon.weaponStats.bulletsInClip <= 0) return;
-        playerAnimator.SetBool(isFiringHash, playerController.isFiring);
+        if (equippedWeapon.weaponStats.bulletsInClip <= 0)
+        {
+            //playerController.isFiring = false;
+            StartReloading();
+            return;
+        }
+           
+        playerAnimator.SetBool(isFiringHash, true);
         playerController.isFiring = true;
         equippedWeapon.StartFiringWeapon();
     }
@@ -96,10 +102,11 @@ public class WeaponHolder : MonoBehaviour
         {
             return;
         }
-        equippedWeapon.StartReloading();
 
+        equippedWeapon.StartReloading();
         playerController.isReloading = true;
         playerAnimator.SetBool(isReloadingHash, true);
+        
         InvokeRepeating(nameof(StopReloading), 0, 0.1f);
         //playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
     }
@@ -112,5 +119,10 @@ public class WeaponHolder : MonoBehaviour
         playerAnimator.SetBool(isReloadingHash, false);
         equippedWeapon.StopReloading();
         CancelInvoke(nameof(StopReloading));
+
+        if (firingPressed)
+        {
+            StartFiring();
+        }
     }
 }
