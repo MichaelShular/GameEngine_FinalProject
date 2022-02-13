@@ -2585,6 +2585,7 @@ MonoBehaviour:
     weaponsHitLayers:
       serializedVersion: 2
       m_Bits: 4294967295
+    totalBullets: 500
   isFiring: 0
   isReloading: 0
 --- !u!1 &303306440
@@ -3525,7 +3526,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17938
+  m_Name: pb_Mesh17946
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

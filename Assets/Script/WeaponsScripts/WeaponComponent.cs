@@ -26,6 +26,7 @@ public struct WeaponStats
     public float fireDistance;
     public bool repeating;
     public LayerMask weaponsHitLayers;
+    public int totalBullets;
 }
 public class WeaponComponent : MonoBehaviour
 {
@@ -81,5 +82,31 @@ public class WeaponComponent : MonoBehaviour
     {
         weaponStats.bulletsInClip--;
         Debug.Log(weaponStats.bulletsInClip);
+    }
+
+    public virtual void StartReloading()
+    {
+        isReloading = true;
+        ReloadWeapon();
+    }
+
+    public virtual void StopReloading()
+    {
+        isReloading = false;
+    }
+
+    protected virtual void ReloadWeapon()
+    {
+        int bulletsToReload = weaponStats.clipSize - weaponStats.totalBullets;
+        if(bulletsToReload < 0)
+        {
+            weaponStats.bulletsInClip = weaponStats.clipSize;
+            weaponStats.totalBullets -= weaponStats.clipSize;
+        }
+        else
+        {
+            weaponStats.bulletsInClip = weaponStats.totalBullets;
+            weaponStats.totalBullets = 0;
+        }
     }
 }
