@@ -33,6 +33,8 @@ public class WeaponComponent : MonoBehaviour
     public Transform gripLocation;
     public WeaponStats weaponStats;
     protected WeaponHolder weaponHolder;
+    [SerializeField]
+    protected ParticleSystem firingEffect;
     public bool isFiring;
     public bool isReloading;
 
@@ -76,6 +78,10 @@ public class WeaponComponent : MonoBehaviour
     {
         isFiring = false;
         CancelInvoke(nameof(FireWeapon));
+        if (firingEffect && firingEffect.isPlaying)
+        {
+            firingEffect.Stop();
+        }
     }
 
     protected virtual void FireWeapon()
@@ -97,6 +103,11 @@ public class WeaponComponent : MonoBehaviour
 
     protected virtual void ReloadWeapon()
     {
+        if (firingEffect && firingEffect.isPlaying)
+        {
+            firingEffect.Stop();
+        }
+
         int bulletsToReload = weaponStats.clipSize - weaponStats.totalBullets;
         if(bulletsToReload < 0)
         {
