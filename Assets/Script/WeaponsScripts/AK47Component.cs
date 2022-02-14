@@ -8,7 +8,7 @@ public class AK47Component : WeaponComponent
     {
         Vector3 hitLocation;
 
-        if (weaponStats.bulletsInClip > 0 && !isReloading && !weaponHolder.playerController.isRunning)
+        if (weaponStats.bulletsInClip > 0 && !isReloading)
         {
             base.FireWeapon();
             if (firingEffect)
