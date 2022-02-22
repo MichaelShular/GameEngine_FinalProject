@@ -27,7 +27,7 @@ public class MovementController : MonoBehaviour
     public readonly int movementYHash = Animator.StringToHash("MovementY");
     public readonly int isJumpingHash = Animator.StringToHash("isJumping");
     public readonly int isRunningHash = Animator.StringToHash("isRunning");
-    
+    public readonly int verticalAimHash = Animator.StringToHash("VerticalAim");
 
     private void Awake()
     {
@@ -54,7 +54,25 @@ public class MovementController : MonoBehaviour
 
         var angle = followTransform.transform.localEulerAngles.x;
 
-        if(angle > 180 && angle < 300)
+        
+        float min = -60;
+        float max = 70.0f;
+        float range = max - min;
+        float offsetToZero = 0 - min;
+        float aimAngle = followTransform.transform.localEulerAngles.x;
+        aimAngle = (aimAngle > 180) ? aimAngle - 360 : aimAngle;
+        float val = (aimAngle + offsetToZero) / (range);
+        print(val);
+        playerAnimator.SetFloat(verticalAimHash, val);
+        //if (angle > 180 && angle < min)
+        //{
+        //    angles.x = min;
+        //}
+        //else if (angle < 180 && angle > max)
+        //{
+        //    angles.x = max;
+        //}
+        if (angle > 180 && angle < 300)
         {
             angles.x = 300;
         }
