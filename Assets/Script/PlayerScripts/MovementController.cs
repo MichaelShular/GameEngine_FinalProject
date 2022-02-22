@@ -123,7 +123,10 @@ public class MovementController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-
+        if (playerController.isJumping)
+        {
+            return;
+        }
         playerController.isJumping = true;
  
         playerRigidbody.AddForce((transform.up + moveDirection) * jumpForce, ForceMode.Impulse);
@@ -139,15 +142,42 @@ public class MovementController : MonoBehaviour
         playerController.isAiming = value.isPressed;
     }
    
+    private bool IsGroundCollision(ContactPoint[] contacts)
+    {
+        for (int i = 0; i < contacts.Length; i++)
+        {
+            if(1 - contacts[i].normal.y < 1f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Ground") && !playerController.isJumping) return;
 
+        if (IsGroundCollision(collision.contacts))
+        {
+            playerController.isJumping = false;
+            playerAnimator.SetBool(isJumpingHash, false);
+        }
+
         playerController.isJumping = false;
         playerAnimator.SetBool(isJumpingHash, false);
-
     }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Ground") && !playerController.isJumping || playerRigidbody.velocity.y > 0) return;
 
+        if (IsGroundCollision(collision.contacts))
+        {
+            playerController.isJumping = false;
+            playerAnimator.SetBool(isJumpingHash, false);
+        }
 
+        playerController.isJumping = false;
+        playerAnimator.SetBool(isJumpingHash, false);
+    }
 
 }
