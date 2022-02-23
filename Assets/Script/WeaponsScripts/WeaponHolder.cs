@@ -35,7 +35,7 @@ public class WeaponHolder : MonoBehaviour
         equippedWeapon.Initialize(this);
         PlayerEvents.InvokeOnWeaponEquipped(equippedWeapon);
 
-        gripIKSocketLocation = equippedWeapon.gripLocation;
+        //gripIKSocketLocation = equippedWeapon.gripLocation;
 
     }
 
@@ -49,8 +49,8 @@ public class WeaponHolder : MonoBehaviour
     {
         if (!playerController.isReloading)
         {
-            playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-            playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, gripIKSocketLocation.transform.position);
+            //playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            //playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, gripIKSocketLocation.transform.position);
         }
     }
 
