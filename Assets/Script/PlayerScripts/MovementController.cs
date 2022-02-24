@@ -141,7 +141,14 @@ public class MovementController : MonoBehaviour
     {
         playerController.isAiming = value.isPressed;
     }
-   
+
+    public void OnQuitGame(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            Application.Quit();
+        }
+    }
     private bool IsGroundCollision(ContactPoint[] contacts)
     {
         for (int i = 0; i < contacts.Length; i++)
